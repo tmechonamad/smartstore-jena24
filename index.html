@@ -331,65 +331,41 @@
     padding: 4px 0 0;
   }
 
-  /* ---------- Onlineshop Button ---------- */
-  .shop-btn-wrap{
-    padding: 0 24px 10px;
-    text-align: center;
-  }
-  .shop-btn{
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    background: var(--copper);
-    color: #fff;
-    border: none;
-    border-radius: 8px;
-    padding: 14px 28px;
-    font-family: 'Source Sans 3', sans-serif;
-    font-weight: 700;
-    font-size: 1rem;
-    cursor: pointer;
-    width: 100%;
-    justify-content: center;
-    transition: background 0.15s ease;
-    text-decoration: none;
-  }
-  .shop-btn:hover{ background: var(--copper-dark); }
-  .shop-btn svg{ width: 18px; height: 18px; flex-shrink: 0; }
-
-  /* ---------- PayPal Demo ---------- */
-  .zahlung-box{
-    margin: 0 24px 36px;
-    padding: 20px;
+  /* ---------- Kontakt ---------- */
+  .kontakt-box{
+    margin: 0 24px 30px;
+    padding: 22px 22px 20px;
     background: var(--surface);
     border: 1px solid var(--line);
     border-radius: 10px;
-    text-align: center;
   }
-  .zahlung-hinweis{
-    font-size: 0.78rem;
+  .kontakt-name{
+    font-family: 'Oswald', sans-serif;
+    font-weight: 600;
+    font-size: 1rem;
+    color: var(--ink);
+    margin-bottom: 4px;
+  }
+  .kontakt-zeile{
+    font-size: 0.86rem;
+    line-height: 1.6;
     color: var(--ink-soft);
-    margin: 0 0 14px;
   }
-  .paypal-btn{
-    width:100%;
-    border:none;
-    border-radius: 8px;
-    background: #1C3D6E;
-    color: #fff;
-    font-family:'Source Sans 3', sans-serif;
-    font-weight:700;
-    font-size: 0.98rem;
-    padding: 14px 18px;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    gap: 10px;
-    cursor:pointer;
-    transition: filter 0.15s ease;
+  .kontakt-label{
+    color: var(--ink);
+    font-weight: 600;
   }
-  .paypal-btn:hover{ filter: brightness(1.08); }
-  .paypal-btn svg{ width:18px; height:18px; flex-shrink:0; }
+  .kontakt-trenner{
+    height: 1px;
+    background: var(--line);
+    margin: 12px 0 10px;
+  }
+  .kontakt-link{
+    color: var(--copper);
+    text-decoration: none;
+    font-weight: 600;
+  }
+  .kontakt-link:hover{ text-decoration: underline; }
 
   /* ---------- Fußzeile ---------- */
   .fusszeile{
@@ -484,42 +460,6 @@
     cursor:pointer; display:flex; align-items:center; justify-content:center; flex-shrink:0;
   }
   .chat-send svg{ width:18px; height:18px; }
-
-  /* ---------- PayPal Modal ---------- */
-  .modal{
-    position: fixed; inset:0;
-    background: rgba(28,26,24,0.55);
-    display:flex; align-items:center; justify-content:center;
-    opacity:0; pointer-events:none;
-    transition: opacity 0.2s ease; z-index: 60; padding: 24px;
-  }
-  .modal.aktiv{ opacity:1; pointer-events:auto; }
-  .modal-card{
-    background: var(--surface); border-radius: 14px;
-    padding: 30px 26px; width: 100%; max-width: 340px; text-align:center;
-  }
-  .spinner{
-    width: 34px; height:34px;
-    border: 3px solid var(--line); border-top-color: var(--copper);
-    border-radius:50%; margin: 0 auto 18px;
-    animation: dreh 0.8s linear infinite;
-  }
-  @keyframes dreh{ to{ transform: rotate(360deg); } }
-  .modal-status{ font-size: 0.92rem; color: var(--ink-soft); margin: 0; }
-  .modal-erfolg-titel{
-    font-family:'Oswald', sans-serif; font-weight:700;
-    text-transform: uppercase; font-size: 1.1rem;
-    margin: 0 0 10px; color: var(--copper);
-  }
-  .modal-erfolg-text{
-    font-size: 0.88rem; color: var(--ink-soft); line-height:1.5; margin: 0 0 20px;
-  }
-  .modal-close-btn{
-    border:none; background: var(--ink); color: var(--bg);
-    padding: 11px 22px; border-radius: 8px;
-    font-weight:600; cursor:pointer; font-family:'Source Sans 3', sans-serif;
-  }
-  .hidden{ display:none; }
 </style>
 </head>
 <body>
@@ -561,17 +501,6 @@
     <img src="weinreben.jpg" alt="Französischer Weinreben-Extrakt">
   </div>
 
-  <!-- Zum Onlineshop Button -->
-  <div class="shop-btn-wrap">
-    <a href="#" class="shop-btn" id="shopBtn">
-      <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/>
-        <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/>
-      </svg>
-      Zum Onlineshop
-    </a>
-  </div>
-
   <!-- Produkttexte -->
   <div class="info" style="margin-top:24px;">
     <h1 class="produktname" id="produktname"></h1>
@@ -601,13 +530,17 @@
     <div class="scroll-hint">← WISCHEN →</div>
   </div>
 
-  <!-- PayPal -->
-  <div class="zahlung-box">
-    <p class="zahlung-hinweis" id="zahlungshinweis"></p>
-    <button class="paypal-btn" id="paypalBtn">
-      <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M3 10h18"/><path d="M7 14h3"/></svg>
-      <span id="paypalBtnText"></span>
-    </button>
+  <!-- Kontakt -->
+  <div class="kontakt-box">
+    <div class="section-label" style="margin-bottom:14px;">KONTAKT</div>
+    <div class="kontakt-name" id="kontaktName"></div>
+    <div class="kontakt-zeile" id="kontaktAdresse1"></div>
+    <div class="kontakt-zeile" id="kontaktAdresse2"></div>
+    <div class="kontakt-zeile" id="kontaktAdresse3"></div>
+    <div class="kontakt-trenner"></div>
+    <div class="kontakt-zeile"><span class="kontakt-label">Tel.:</span> <span id="kontaktTel"></span></div>
+    <div class="kontakt-zeile"><span class="kontakt-label">Fax:</span> <span id="kontaktFax"></span></div>
+    <div class="kontakt-zeile"><span class="kontakt-label">E-Mail:</span> <a id="kontaktEmail" class="kontakt-link"></a></div>
   </div>
 
   <div class="fusszeile" id="fusszeile"></div>
@@ -643,21 +576,6 @@
     <button class="chat-send" id="chatSend">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
     </button>
-  </div>
-</div>
-
-<!-- PayPal Modal -->
-<div class="modal" id="payModal">
-  <div class="modal-card">
-    <div id="payLoading">
-      <div class="spinner"></div>
-      <p class="modal-status" id="payStatus"></p>
-    </div>
-    <div id="payErfolg" class="hidden">
-      <p class="modal-erfolg-titel" id="payErfolgTitel"></p>
-      <p class="modal-erfolg-text" id="payErfolgText"></p>
-      <button class="modal-close-btn" id="payClose"></button>
-    </div>
   </div>
 </div>
 
@@ -703,12 +621,20 @@
   document.getElementById('kurzbeschreibung').textContent = inhalte.kurzbeschreibung || '';
   document.getElementById('beschreibung').textContent = inhalte.beschreibung || '';
   document.getElementById('anwendung').textContent = inhalte.anwendung || '';
-  document.getElementById('zahlungshinweis').textContent = inhalte.zahlungshinweis || '';
-  document.getElementById('paypalBtnText').textContent = (inhalte.zahlung || {}).buttonText || '';
   document.getElementById('fusszeile').textContent = inhalte.fusszeile || '';
-  document.getElementById('payErfolgTitel').textContent = (inhalte.zahlung || {}).erfolgTitel || '';
-  document.getElementById('payErfolgText').textContent = (inhalte.zahlung || {}).erfolgText || '';
-  document.getElementById('payClose').textContent = (inhalte.zahlung || {}).schliessenButton || '';
+
+  // Kontaktdaten
+  if (inhalte.kontakt) {
+    document.getElementById('kontaktName').textContent = inhalte.kontakt.name || '';
+    document.getElementById('kontaktAdresse1').textContent = inhalte.kontakt.strasse || '';
+    document.getElementById('kontaktAdresse2').textContent = inhalte.kontakt.plzOrt || '';
+    document.getElementById('kontaktAdresse3').textContent = inhalte.kontakt.land || '';
+    document.getElementById('kontaktTel').textContent = inhalte.kontakt.telefon || '';
+    document.getElementById('kontaktFax').textContent = inhalte.kontakt.fax || '';
+    const emailEl = document.getElementById('kontaktEmail');
+    emailEl.textContent = inhalte.kontakt.email || '';
+    emailEl.href = 'mailto:' + (inhalte.kontakt.email || '');
+  }
 
   // Begrüßung
   if (inhalte.begruessung) {
@@ -800,28 +726,6 @@
 
   document.getElementById('chatSend').addEventListener('click', nachrichtSenden);
   chatInput.addEventListener('keypress', e => { if (e.key === 'Enter') nachrichtSenden(); });
-
-  // ---------- PayPal Modal ----------
-  const payModal = document.getElementById('payModal');
-  const payLoading = document.getElementById('payLoading');
-  const payErfolg = document.getElementById('payErfolg');
-  const payStatus = document.getElementById('payStatus');
-
-  document.getElementById('paypalBtn').addEventListener('click', () => {
-    payLoading.classList.remove('hidden');
-    payErfolg.classList.add('hidden');
-    payStatus.textContent = (inhalte.zahlung || {}).schritt1 || '';
-    payModal.classList.add('aktiv');
-    setTimeout(() => { payStatus.textContent = (inhalte.zahlung || {}).schritt2 || ''; }, 1100);
-    setTimeout(() => { payLoading.classList.add('hidden'); payErfolg.classList.remove('hidden'); }, 2200);
-  });
-  document.getElementById('payClose').addEventListener('click', () => payModal.classList.remove('aktiv'));
-
-  // Onlineshop Button
-  document.getElementById('shopBtn').addEventListener('click', e => {
-    e.preventDefault();
-    alert('Demo: Hier würde der Onlineshop von L\'Oréal Men Expert geöffnet.');
-  });
 </script>
 </body>
 </html>

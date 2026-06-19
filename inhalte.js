@@ -14,11 +14,11 @@
 const inhalte = {
 
   // ---- Begrüßungstext oben auf der Seite ----
-  begruessung: "Herzlich willkommen in unserem Smartstore Jena24!",
+  begruessung: "Herzlich willkommen in Ihrem Smartstore!",
   begruessungUntertext: "Hier finden Sie alle Produktdetails auf einen Blick. Bei Fragen stehen wir Ihnen jederzeit zur Verfügung – nutzen Sie einfach unseren Chat-Assistenten unten rechts.",
 
   // ---- Kopfbereich / Eyebrow-Text über dem Produktnamen ----
-  eyebrow: "SMARTSTORE JENA24 · PRODUKTINFO",
+  eyebrow: "SMARTSTORE · PRODUKTINFO",
 
   // ---- Produktname und Untertitel ----
   produktname: "L'Oréal Men Expert Barber Club",
@@ -53,17 +53,15 @@ const inhalte = {
   // ---- Anwendungshinweis ----
   anwendung: "Anwendung: Zunächst den Körper, das Gesicht sowie die Haare unter der Dusche ausreichend mit Wasser benetzen. Anschließend das Stop Stress Duschgel von L'Oréal Paris Men Expert auf die jeweiligen Körperstellen auftragen und dort aufschäumen. Nun den Schaum des kräftigenden und belebenden Waschgels sanft in das Haar sowie in die Haut einmassieren. Zum Schluss sorgfältig mit klarem, warmem Wasser abspülen. Das L'Oréal Paris Men Expert Stop Stress Duschgel überzeugt mit einem intensiv holzig-fruchtigen Duft und kann täglich, auch mehrfach, zur Reinigung verwendet werden.",
 
-  // ---- Hinweis-Text über dem simulierten PayPal-Button ----
-  zahlungshinweis: "Dieser Prototyp simuliert den Bezahlvorgang. Es findet keine echte Zahlung statt.",
-
-  // ---- Texte für den simulierten Bezahlvorgang (Modal) ----
-  zahlung: {
-    buttonText: "Mit PayPal bezahlen (Demo)",
-    schritt1: "Verbindung zu PayPal wird simuliert …",
-    schritt2: "Zahlung wird simuliert …",
-    erfolgTitel: "Zahlung erfolgreich (Demo)",
-    erfolgText: "Dies ist eine Simulation für den Prototyp. Es wurde keine echte Zahlung ausgeführt und kein echtes Geld bewegt.",
-    schliessenButton: "Schließen"
+  // ---- Kontaktdaten des Smartstores ----
+  kontakt: {
+    name: "Smartstore Jena24 GmbH",
+    strasse: "Carl-Zeiss-Promenade 2",
+    plzOrt: "07745 Jena",
+    land: "Deutschland",
+    telefon: "+49 3641 567890",
+    fax: "+49 3641 556678",
+    email: "service@smartstore-jena24.de"
   },
 
   // ---- Chatbot: Begrüßung, die zuerst erscheint ----
@@ -102,8 +100,8 @@ const inhalte = {
       antwort: "Bitte wende dich für Rückgaben an unser Kundencenter vor Ort, du erhältst dort weitere Informationen."
     },
     {
-      schluesselwoerter: ["zahlung", "bezahlen", "paypal"],
-      antwort: "Du kannst die Zahlung oben auf der Seite simulieren – im echten Markt zahlst du direkt an der Kasse oder per App."
+      schluesselwoerter: ["kontakt", "telefon", "anrufen", "email", "e-mail", "adresse", "erreichen"],
+      antwort: "Du erreichst uns unter Tel. +49 3641 567890 oder per E-Mail an service@smartstore-jena24.de. Die Kontaktdaten findest du auch weiter unten auf dieser Seite."
     },
     {
       schluesselwoerter: ["hallo", "hi", "hey", "guten tag"],
